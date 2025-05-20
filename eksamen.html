@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="nb">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="felles.js"></script>
+    <title>Semesteroppgave vår 2020 INFO134</title>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <div id="navigasjon">
+        <div class="">
+            <button class="btn_nav aktiv" id="button1" onclick="visHovedInnhold(0)">Introduksjon</button>
+            <button class="btn_nav" id="button2" onclick="visHovedInnhold(1); oversikt()">Oversikt</button>
+            <button class="btn_nav" id="button3" onclick="visHovedInnhold(2)">Detaljer</button>
+            <button class="btn_nav" id="button4" onclick="visHovedInnhold(3)">Sammenligning</button>
+        </div>
+    </div>
+
+    <!-- MAIN DIV -->
+    <div id="hovedinnhold">
+
+        <!-- DIV FOR INTRODUCTION (INTRODUKSJON) -->
+        <div id="introduksjon" class="visible">
+            <p>
+                <h1>Introduksjon</h1>
+                Denne nettsiden er en eksamensbesvarelse i emnet INFO134 ved Universitetet i Bergen. <br>
+                Nettsiden bygger på tre ulike datasett med informasjon om Norges befolkning. Alle datasettene er i
+                utgangspunktet hentet fra <a href="https://www.ssb.no/" target="_blank">statistisk sentralbyrå</a> sine
+                nettsider, men noen detaljer er fjernet. Dataene inneholder derfor noen unøyaktigheter.<br><br>
+
+                <h4>Nettsiden består av tre ulike deler</h4>
+                <ul>
+                    <li>
+                        <strong>Oversikt</strong>, der alle kommuner med navn, kommunenummer, siste måling av total
+                        befolkning
+                        og befolkningsvekst i prosent vises.
+                    </li>
+
+                    <li>
+                        <strong>Detaljer</strong>, der det er mulig å skrive inn et kommunenummer, og få opp kommunens
+                        navn,
+                        kommunenummer, siste målte befolkning, siste målte statistikk for sysselsetting og høyere
+                        utdanning. I tillegg til historisk
+                        utvikling i form av tabeller/lister for befolkningsvekst, sysselsettingsvekst og
+                        utdanningsvekst.
+                    </li>
+
+                    <li>
+                        <strong>Sammenligning</strong>, der det er mulig å skrive inne to ulike kommunenumre, og få opp
+                        en sammenlikning av disse to.
+                        Her vil det vises utdanningsdata for det siste året (som datasettet dekker) innen
+                        kjønnskategoriene “Menn” og “Kvinner” i begge kommunene,
+                        for alle utdanningskategorier. For hver kjønnskategori og hver utdanningskategori er det
+                        indikert hvilken av
+                        kommunene som har høyest andel utdannede. Nederst vil det vises hvilken av de to kommunene som
+                        har høyest andel utdannede i flest utdanningskategorier.
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <!-- DIV FOR OVERVIEW (OVERSIKT) -->
+        <div id="oversikt" class="hidden">
+            <h2>Oversikt over alle kommuner pr 2018</h2>
+            <table cellpadding="0" cellspacing="0" id="oversikt_table">
+                <thead id="oversikt_table_head">
+                    <tr>
+                        <th>Kommunenavn</th>
+                        <th>Kommunenummer</th>
+                        <th>Total befolkning</th>
+                        <th>Befolkningsvekst fra fjoråret</th>
+                    </tr>
+                </thead>
+                <tbody id="oversikt_table_body">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- DIV FOR DETAILS (DETALJER) -->
+        <div id="detaljer" class="hidden">
+            <h2>Detaljer om &eacute;n kommune</h2>
+            <p>Skriv inn et kommunenummer</p>
+            <input type="text" id="detaljer_input" onfocus="this.value=''" placeholder="Skriv kommunenummer">
+            <button type="button" id="detaljer_search_button" onclick="detaljer()">Søk</button>
+
+            <div id="detaljer_body" class="hidden">
+
+                <h4 id="detaljer_overskrift"></h4>
+                <h6 id="detaljer_info"></h6>
+                <h5 id="sys_overskrift"></h5>
+
+                <table id="sys_table">
+                    <thead id="sys_table_head">
+                        <tr>
+                            <th id="sys_table_year"></th>
+                            <th>Antall</th>
+                            <th> &#37</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sys_table_body">
+                    </tbody>
+                </table>
+
+                <h5 id="utd_overskrift"></h5>
+
+                <table id="utd_table">
+                    <thead id="utd_table_head">
+                        <tr>
+                            <th>2017</th>
+                            <th>Antall</th>
+                            <th>&#37 </th>
+                        </tr>
+                    </thead>
+                    <tbody id="utd_table_body">
+                    </tbody>
+                </table>
+
+                <br> <br> <br>
+
+
+                <h5>Historisk utvikling</h5>
+                <ul id="myList"></ul>
+
+                <table cellpadding="0" cellspacing="0" id="oversikt_table">
+                    <thead id="historisk_table_head">
+                        <tr>
+                            <th>År</th>
+                            <th>Befolkningstall (vekst fra fjoråret)</th>
+                            <th>Sysselsatte personer (vekst fra fjoråret)</th>
+                            <th>Antall personer med høyere utdanning (vekst fra fjoråret)</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="historisk_table_body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- DIV FOR COMPARISON (Sammenligning) -->
+
+        <div id="sammenlikning" class="hidden">
+            <h2>Sammenligning av to kommuner</h2>
+            <p>Skriv inn to kommunenumre for å sammenligne utdanningsnivå</p>
+            <input type="text" id="sammenlikning_input_1" onfocus="this.value=''" placeholder="Kommunenummer 1">
+            <input type="text" id="sammenlikning_input_2" onfocus="this.value=''" placeholder="Kommunenummer 2">
+            <br>
+            <button type="button" id="sammenlikning_search_button" onclick="sammenlikning()">Søk</button>
+            <br><br>
+            <div id="sammenlikning_body" class="hidden">
+
+                <h5 id="info_sammenlikning"></h5>
+                <table cellpadding="0" cellspacing="0" id="sammenlikning_table_menn">
+                    <thead id="sammenlikning_table_menn_head">
+                        <tr>
+                            <th>Menn</th>
+                            <th id="kom1_menn_header"></th>
+                            <th id="kom2_menn_header"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="sammenlikning_table_menn_body">
+                    </tbody>
+                </table>
+
+                <p id="menn_vinner"></p>
+
+                <table cellpadding="0" cellspacing="0" id="sammenlikning_table_kvinner">
+                    <thead id="sammenlikning_table_kvinner_head">
+                        <tr>
+                            <th>Kvinner</th>
+                            <th id="kom1_kvinner_header"></th>
+                            <th id="kom2_kvinner_header"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="sammenlikning_table_kvinner_body">
+                    </tbody>
+                </table>
+
+                <p id="kvinner_vinner"></p>
+                <p id="kommune_vinner"></p>
+
+                <p>
+                    <strong>Nivåer forklaring</strong><br>
+                    01 Grunnskolenivå<br>
+                    11 Fagskolenivå<br>
+                    02a Videregående skolenivå<br>
+                    03a Universitets- og høgskolenivå, kort<br>
+                    04a Universitets- og høgskolenivå, lang<br>
+                </p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <div id="bunntekst">
+                <br><br><br>
+
+                <hr>
+
+                <p> <em> Denne nettsiden er en eksamensbesvarelse i emnet INFO134 ved Universitetet i Bergen og er kun
+                        ment
+                        til bruk i forbindelse med dette. <br>
+                        Alle datasettene som er brukt er i utgangspunktet hentet fra SSB, men noen detaljer er fjernet.
+                        Dataene inneholder derfor noen unøyaktigheter. Vi henviser til <a
+                            href="http://www.ssb.no">ssb.no</a> for fullstendig statistikk.
+                </p>
+            </div>
+        </footer>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,278 @@
+body {
+    font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif, "Noto Sans";
+    display: block;
+    line-height: 25px;
+  }
+  
+  #hovedinnhold {
+    padding: 20px;
+  }
+  
+  #navigasjon {
+    overflow: hidden;
+    border: none;
+    margin-left: 25px;
+    margin-top: 10px;
+  }
+  
+  .btn_nav {
+    float: left;
+    text-align: center;
+    font-size: 13px;
+    padding: 0px 30px;
+    margin: 6px 5px 3px 2px;
+  
+  }
+  
+  .aktiv {
+    padding-inline-start: none;
+    outline: none;
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .aktiv:focus {
+    background-color: #ddd;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .visible {
+    display: block;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 80%;
+    table-layout: auto;
+    text-align: left;
+  }
+  
+  #sys_table {
+    margin-bottom: 2.5rem;
+  }
+  
+  table td,
+  table th {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e1e1e1;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  table tr:hover {
+    background-color: #ddd;
+  }
+  
+  th:first-child,
+  td:first-child {
+    padding-left: 8px;
+  }
+  
+  th:last-child,
+  td:last-child {
+    padding-right: 5px;
+  }
+  
+  a {
+    color: #555;
+  }
+  
+  a:hover {
+    color: #bbb;
+  }
+  
+  input {
+    width: 20%;
+    padding: 10px 25px;
+    margin: 15px 5px;
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: left;
+    font-size: 15px;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 1.5rem;
+    font-weight: 250;
+  
+  }
+  
+  h1 {
+    font-size: 3.8rem;
+    line-height: 1.4;
+  }
+  
+  h2 {
+    font-size: 3rem;
+    line-height: 1.2;
+  }
+  
+  h3 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  h4 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  h5 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  h6 {
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+  
+  .button,
+  button {
+    display: inline-block;
+    height: 38px;
+    border-radius: 4px;
+    padding: 0 30px;
+    letter-spacing: 0.1rem;
+    color: #555;
+    border: 1px solid #bbb;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 38px;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  .button:hover,
+  button:hover {
+    color: #333;
+    border-color: #888;
+  }
+  
+  
+  /* Changes horizontal view to vertical view on screen size 650px and below */
+  @media (max-width: 650px) {
+  
+    /* Make overview display vertical on small screens */
+    #oversikt thead {
+      display: none;
+    }
+  
+    #oversikt tbody,
+    #oversikt tr,
+    #oversikt td {
+      display: block;
+    }
+  
+    #oversikt tr {
+      margin-bottom: 15px;
+    }
+  
+    #oversikt td {
+      text-align: right;
+      text-align: right;
+      position: relative;
+    }
+  
+    #oversikt td::before {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      text-align: left;
+      font-weight: bold;
+    }
+  
+    #oversikt td:nth-of-type(1):before {
+      content: "Kommunenavn";
+    }
+  
+    #oversikt td:nth-of-type(2):before {
+      content: "Kommunenummer";
+    }
+  
+    #oversikt td:nth-of-type(3):before {
+      content: "Total befolkning";
+    }
+  
+    #oversikt td:nth-of-type(4):before {
+      content: "Befolkningsvekst fra fjoråret";
+    }
+  
+    /* HISTORISK UTVIKLING */
+    #detaljer #oversikt-table thead {
+      display: none;
+    }
+  
+    #detaljer #oversikt-table tbody,
+    #detaljer #oversikt-table tr,
+    #detaljer #oversikt-table td {
+      display: block;
+    }
+  
+    #detaljer #oversikt-table tr {
+      margin-bottom: 50px;
+    }
+  
+    #detaljer #oversikt-table td {
+      text-align: right;
+      padding-left: 50%;
+      height: 70px;
+      text-align: right;
+      position: relative;
+    }
+  
+    #detaljer #oversikt-table td::before {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: wrap;
+      text-align: left;
+      font-weight: bold;
+    }
+  
+    #detaljer #oversikt-table td:nth-of-type(1):before {
+      content: "Årstall";
+    }
+  
+    #detaljer #oversikt-table td:nth-of-type(2):before {
+      content: "Befolkning (vekst)";
+    }
+  
+    #detaljer #oversikt-table td:nth-of-type(3):before {
+      content: "Sysselsatte personer (vekst fra fjoråret)";
+    }
+  
+    #detaljer #oversikt-table td:nth-of-type(4):before {
+      content: "Antall personer med høyere utdanning (vekst fra fjoråret)";
+    }
+  }
+  
+  
+  
+  /* 
+  CSS inspired by "https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"
+  Inspiration on making the responsive table:
+  Author: Chris Coyier
+  Year: 2018
+  Web-page: https://css-tricks.com/responsive-data-tables/
+  */
